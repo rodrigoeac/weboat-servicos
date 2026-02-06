@@ -7,6 +7,7 @@ import {
 } from '../utils/calcularSimulacao.ts';
 import { CONVIDADOS_DEFAULT, CONVIDADOS_MIN, CONVIDADOS_MAX } from '../constants.ts';
 import { createT, type Idioma } from '../i18n.ts';
+import { traduzirServico } from '../utils/traduzirServico.ts';
 
 export function useSimulacao() {
   const [idioma, setIdioma] = useState<Idioma>('pt');
@@ -25,9 +26,14 @@ export function useSimulacao() {
     document.documentElement.lang = langMap[idioma];
   }, [idioma]);
 
+  const servicosTraduzidos = useMemo(
+    () => servicos.map((s) => traduzirServico(s, idioma)),
+    [idioma],
+  );
+
   const servicosSelecionados = useMemo(
-    () => servicos.filter((s) => servicosSelecionadosIds.has(s.id)),
-    [servicosSelecionadosIds],
+    () => servicosTraduzidos.filter((s) => servicosSelecionadosIds.has(s.id)),
+    [servicosTraduzidos, servicosSelecionadosIds],
   );
 
   const resultado = useMemo(
@@ -72,6 +78,7 @@ export function useSimulacao() {
     categoriaAtiva,
     servicosSelecionadosIds,
     servicosSelecionados,
+    servicosTraduzidos,
     resultado,
     temKitFesta,
     setTamanhoEmbarcacao,

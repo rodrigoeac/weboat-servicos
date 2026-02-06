@@ -5,6 +5,8 @@ export const servicos: Servico[] = [
   {
     id: 'utilizacao-churrasqueira',
     nome: 'Utilizacao da Churrasqueira',
+    nomeEN: 'Grill Usage',
+    nomeES: 'Uso de la Parrilla',
     categoria: 'churrasco',
     tipo: 'fixo',
     premium: false,
@@ -12,11 +14,25 @@ export const servicos: Servico[] = [
     secoes: [
       {
         titulo: 'O que esta incluido',
+        tituloEN: 'What is included',
+        tituloES: 'Que esta incluido',
         itens: [
           'Tripulacao na churrasqueira',
           '02 sacos de gelo escama (20kg cada)',
           '01 saco de gelo filtrado (10kg)',
           'Carvao',
+        ],
+        itensEN: [
+          'Crew at the grill',
+          '02 flake ice bags (20kg each)',
+          '01 filtered ice bag (10kg)',
+          'Charcoal',
+        ],
+        itensES: [
+          'Tripulacion en la parrilla',
+          '02 bolsas de hielo escama (20kg cada una)',
+          '01 bolsa de hielo filtrado (10kg)',
+          'Carbon',
         ],
       },
     ],
@@ -24,12 +40,22 @@ export const servicos: Servico[] = [
       'Na contratacao de qualquer pacote de churrasco, nao e necessario pagar novamente a taxa de churrasqueira.',
       'Em embarcacoes maiores, o valor da churrasqueira pode variar por conta da quantidade de tripulantes e gelo oferecido.',
     ],
+    observacoesEN: [
+      'When booking any BBQ package, there is no need to pay the grill fee again.',
+      'On larger boats, the grill fee may vary due to the number of crew members and ice provided.',
+    ],
+    observacoesES: [
+      'Al contratar cualquier paquete de asado, no es necesario pagar nuevamente la tarifa de la parrilla.',
+      'En embarcaciones mas grandes, el valor de la parrilla puede variar por la cantidad de tripulantes y hielo ofrecido.',
+    ],
   },
 
   // ==================== 2. KIT CHURRASCO SIMPLES ====================
   {
     id: 'kit-churrasco-simples',
     nome: 'Kit Churrasco Simples',
+    nomeEN: 'Simple BBQ Kit',
+    nomeES: 'Kit Asado Simple',
     categoria: 'churrasco',
     tipo: 'por_pessoa',
     premium: false,
@@ -42,10 +68,12 @@ export const servicos: Servico[] = [
       { min: 16, max: 20, valorPorPessoa: 105 },
       { min: 21, max: 25, valorPorPessoa: 100 },
     ],
-    staff: { descricao: 'Tripulacao na churrasqueira', quantidade: 1 },
+    staff: { descricao: 'Tripulacao na churrasqueira', descricaoEN: 'Crew at the grill', descricaoES: 'Tripulacion en la parrilla', quantidade: 1 },
     secoes: [
       {
         titulo: 'Comidas',
+        tituloEN: 'Food',
+        tituloES: 'Comidas',
         itens: [
           'Picanha',
           'Contra file',
@@ -54,10 +82,38 @@ export const servicos: Servico[] = [
           'Pao de alho',
           'Farofa pronta',
         ],
+        itensEN: [
+          'Picanha (top sirloin cap)',
+          'Sirloin steak',
+          'Sausage',
+          'Chicken drumettes',
+          'Garlic bread',
+          'Farofa (toasted cassava flour)',
+        ],
+        itensES: [
+          'Picanha',
+          'Bife de lomo',
+          'Chorizo',
+          'Alitas de pollo',
+          'Pan de ajo',
+          'Farofa (harina de mandioca tostada)',
+        ],
       },
       {
         titulo: 'Bebidas',
+        tituloEN: 'Beverages',
+        tituloES: 'Bebidas',
         itens: [
+          'Coca-Cola',
+          'Guarana',
+          'Agua mineral',
+        ],
+        itensEN: [
+          'Coca-Cola',
+          'Guarana soda',
+          'Mineral water',
+        ],
+        itensES: [
           'Coca-Cola',
           'Guarana',
           'Agua mineral',
@@ -65,12 +121,16 @@ export const servicos: Servico[] = [
       },
     ],
     opcionais: ['Cerveja Heineken: R$ 8 por unidade'],
+    opcionaisEN: ['Heineken beer: R$ 8 per unit'],
+    opcionaisES: ['Cerveza Heineken: R$ 8 por unidad'],
   },
 
   // ==================== 3. CHURRASCO COM ACOMPANHAMENTOS ====================
   {
     id: 'churrasco-com-acompanhamentos',
     nome: 'Churrasco com Acompanhamentos',
+    nomeEN: 'BBQ with Side Dishes',
+    nomeES: 'Asado con Acompanamientos',
     categoria: 'churrasco',
     tipo: 'por_pessoa',
     premium: false,
@@ -81,10 +141,12 @@ export const servicos: Servico[] = [
       { min: 16, max: 20, valorPorPessoa: 150 },
       { min: 21, max: 25, valorPorPessoa: 145 },
     ],
-    staff: { descricao: '1 Churrasqueiro', quantidade: 1 },
+    staff: { descricao: '1 Churrasqueiro', descricaoEN: '1 Grill Master', descricaoES: '1 Parrillero', quantidade: 1 },
     secoes: [
       {
         titulo: 'Carnes Premium',
+        tituloEN: 'Premium Meats',
+        tituloES: 'Carnes Premium',
         itens: [
           'Picanha',
           'Bife de Chorizo',
@@ -92,40 +154,96 @@ export const servicos: Servico[] = [
           'Linguica Toscana',
           'Drumete',
         ],
+        itensEN: [
+          'Picanha (top sirloin cap)',
+          'Chorizo steak',
+          'Pork picanha',
+          'Tuscan sausage',
+          'Chicken drumettes',
+        ],
+        itensES: [
+          'Picanha',
+          'Bife de Chorizo',
+          'Picanha de cerdo',
+          'Chorizo toscano',
+          'Alitas de pollo',
+        ],
       },
       {
         titulo: 'Aperitivos de Entrada',
+        tituloEN: 'Appetizers',
+        tituloES: 'Aperitivos de Entrada',
         itens: [
           'Queijo coalho',
           'Pao de alho',
           'Linguica',
         ],
+        itensEN: [
+          'Coalho cheese',
+          'Garlic bread',
+          'Sausage',
+        ],
+        itensES: [
+          'Queso coalho',
+          'Pan de ajo',
+          'Chorizo',
+        ],
       },
       {
         titulo: 'Acompanhamentos',
+        tituloEN: 'Side Dishes',
+        tituloES: 'Acompanamientos',
         itens: [
           'Arroz branco',
           'Farofa crocante',
           'Salada de batata com aioli',
           'Vinagrete',
         ],
+        itensEN: [
+          'White rice',
+          'Crunchy farofa',
+          'Potato salad with aioli',
+          'Vinaigrette salsa',
+        ],
+        itensES: [
+          'Arroz blanco',
+          'Farofa crocante',
+          'Ensalada de papa con aioli',
+          'Vinagreta',
+        ],
       },
       {
         titulo: 'Bebidas',
+        tituloEN: 'Beverages',
+        tituloES: 'Bebidas',
         itens: [
           'Refrigerantes',
           'Agua com e sem gas',
           'Sucos',
         ],
+        itensEN: [
+          'Soft drinks',
+          'Sparkling and still water',
+          'Juices',
+        ],
+        itensES: [
+          'Refrescos',
+          'Agua con y sin gas',
+          'Jugos',
+        ],
       },
     ],
     opcionais: ['Cerveja Heineken: R$ 8 por unidade'],
+    opcionaisEN: ['Heineken beer: R$ 8 per unit'],
+    opcionaisES: ['Cerveza Heineken: R$ 8 por unidad'],
   },
 
   // ==================== 4. COMBO CHURRASCO + OPEN BAR BASICO ====================
   {
     id: 'combo-churrasco-openbar-basico',
     nome: 'Combo Churrasco + Open Bar Basico',
+    nomeEN: 'Combo BBQ + Basic Open Bar',
+    nomeES: 'Combo Asado + Open Bar Basico',
     categoria: 'combo',
     tipo: 'por_pessoa',
     premium: false,
@@ -136,10 +254,12 @@ export const servicos: Servico[] = [
       { min: 16, max: 20, valorPorPessoa: 215 },
       { min: 21, max: 25, valorPorPessoa: 205 },
     ],
-    staff: { descricao: '1 Barman e 1 Churrasqueiro', quantidade: 2 },
+    staff: { descricao: '1 Barman e 1 Churrasqueiro', descricaoEN: '1 Bartender and 1 Grill Master', descricaoES: '1 Barman y 1 Parrillero', quantidade: 2 },
     secoes: [
       {
         titulo: 'Carnes Premium',
+        tituloEN: 'Premium Meats',
+        tituloES: 'Carnes Premium',
         itens: [
           'Picanha',
           'Bife de Chorizo',
@@ -147,26 +267,68 @@ export const servicos: Servico[] = [
           'Linguica Toscana',
           'Drumete',
         ],
+        itensEN: [
+          'Picanha (top sirloin cap)',
+          'Chorizo steak',
+          'Pork picanha',
+          'Tuscan sausage',
+          'Chicken drumettes',
+        ],
+        itensES: [
+          'Picanha',
+          'Bife de Chorizo',
+          'Picanha de cerdo',
+          'Chorizo toscano',
+          'Alitas de pollo',
+        ],
       },
       {
         titulo: 'Aperitivos de Entrada',
+        tituloEN: 'Appetizers',
+        tituloES: 'Aperitivos de Entrada',
         itens: [
           'Queijo coalho',
           'Pao de alho',
           'Linguica',
         ],
+        itensEN: [
+          'Coalho cheese',
+          'Garlic bread',
+          'Sausage',
+        ],
+        itensES: [
+          'Queso coalho',
+          'Pan de ajo',
+          'Chorizo',
+        ],
       },
       {
         titulo: 'Acompanhamentos',
+        tituloEN: 'Side Dishes',
+        tituloES: 'Acompanamientos',
         itens: [
           'Arroz branco',
           'Farofa crocante',
           'Salada de batata com aioli',
           'Vinagrete',
         ],
+        itensEN: [
+          'White rice',
+          'Crunchy farofa',
+          'Potato salad with aioli',
+          'Vinaigrette salsa',
+        ],
+        itensES: [
+          'Arroz blanco',
+          'Farofa crocante',
+          'Ensalada de papa con aioli',
+          'Vinagreta',
+        ],
       },
       {
         titulo: 'Drinks',
+        tituloEN: 'Cocktails',
+        tituloES: 'Tragos',
         itens: [
           'Caipirinha',
           'Caipvodka',
@@ -174,17 +336,45 @@ export const servicos: Servico[] = [
           'Gin com frutas vermelhas',
           '1 rodada de shot (Bananinha ou Tequila)',
         ],
+        itensEN: [
+          'Caipirinha',
+          'Caipvodka',
+          'Gin and tonic',
+          'Gin with berries',
+          '1 round of shots (Bananinha or Tequila)',
+        ],
+        itensES: [
+          'Caipirinha',
+          'Caipvodka',
+          'Gin tonic',
+          'Gin con frutos rojos',
+          '1 ronda de shots (Bananinha o Tequila)',
+        ],
       },
       {
         titulo: 'Bebidas',
+        tituloEN: 'Beverages',
+        tituloES: 'Bebidas',
         itens: [
           'Vodka Smirnoff, Cachaca Pitu ou 51, Gin Seagers',
           'Cerveja 2,5L por pessoa: Brahma ou Original',
           'Coca-Cola (normal e zero), Guarana, agua com e sem gas, sucos naturais',
         ],
+        itensEN: [
+          'Vodka Smirnoff, Cachaca Pitu or 51, Gin Seagers',
+          'Beer 2.5L per person: Brahma or Original',
+          'Coca-Cola (regular and zero), Guarana, sparkling and still water, natural juices',
+        ],
+        itensES: [
+          'Vodka Smirnoff, Cachaca Pitu o 51, Gin Seagers',
+          'Cerveza 2,5L por persona: Brahma u Original',
+          'Coca-Cola (normal y zero), Guarana, agua con y sin gas, jugos naturales',
+        ],
       },
       {
         titulo: 'Frutas disponiveis (escolha ate 4)',
+        tituloEN: 'Available fruits (choose up to 4)',
+        tituloES: 'Frutas disponibles (elige hasta 4)',
         itens: [
           'Limao',
           'Maracuja',
@@ -192,6 +382,22 @@ export const servicos: Servico[] = [
           'Melancia',
           'Tangerina',
           'Caju',
+        ],
+        itensEN: [
+          'Lime',
+          'Passion fruit',
+          'Pineapple',
+          'Watermelon',
+          'Tangerine',
+          'Cashew fruit',
+        ],
+        itensES: [
+          'Limon',
+          'Maracuya',
+          'Pina',
+          'Sandia',
+          'Mandarina',
+          'Maranon',
         ],
       },
     ],
@@ -201,6 +407,8 @@ export const servicos: Servico[] = [
   {
     id: 'combo-churrasco-openbar-premium',
     nome: 'Combo Churrasco + Open Bar Premium',
+    nomeEN: 'Combo BBQ + Premium Open Bar',
+    nomeES: 'Combo Asado + Open Bar Premium',
     categoria: 'combo',
     tipo: 'por_pessoa',
     premium: true,
@@ -211,10 +419,12 @@ export const servicos: Servico[] = [
       { min: 16, max: 20, valorPorPessoa: 235 },
       { min: 21, max: 25, valorPorPessoa: 220 },
     ],
-    staff: { descricao: '1 Barman e 1 Churrasqueiro', quantidade: 2 },
+    staff: { descricao: '1 Barman e 1 Churrasqueiro', descricaoEN: '1 Bartender and 1 Grill Master', descricaoES: '1 Barman y 1 Parrillero', quantidade: 2 },
     secoes: [
       {
         titulo: 'Carnes Premium',
+        tituloEN: 'Premium Meats',
+        tituloES: 'Carnes Premium',
         itens: [
           'Picanha',
           'Bife de Chorizo',
@@ -222,26 +432,68 @@ export const servicos: Servico[] = [
           'Linguica Toscana',
           'Drumete',
         ],
+        itensEN: [
+          'Picanha (top sirloin cap)',
+          'Chorizo steak',
+          'Pork picanha',
+          'Tuscan sausage',
+          'Chicken drumettes',
+        ],
+        itensES: [
+          'Picanha',
+          'Bife de Chorizo',
+          'Picanha de cerdo',
+          'Chorizo toscano',
+          'Alitas de pollo',
+        ],
       },
       {
         titulo: 'Aperitivos de Entrada',
+        tituloEN: 'Appetizers',
+        tituloES: 'Aperitivos de Entrada',
         itens: [
           'Queijo coalho',
           'Pao de alho',
           'Linguica',
         ],
+        itensEN: [
+          'Coalho cheese',
+          'Garlic bread',
+          'Sausage',
+        ],
+        itensES: [
+          'Queso coalho',
+          'Pan de ajo',
+          'Chorizo',
+        ],
       },
       {
         titulo: 'Acompanhamentos',
+        tituloEN: 'Side Dishes',
+        tituloES: 'Acompanamientos',
         itens: [
           'Arroz branco',
           'Farofa crocante',
           'Salada de batata com aioli',
           'Vinagrete',
         ],
+        itensEN: [
+          'White rice',
+          'Crunchy farofa',
+          'Potato salad with aioli',
+          'Vinaigrette salsa',
+        ],
+        itensES: [
+          'Arroz blanco',
+          'Farofa crocante',
+          'Ensalada de papa con aioli',
+          'Vinagreta',
+        ],
       },
       {
         titulo: 'Drinks Especiais',
+        tituloEN: 'Signature Cocktails',
+        tituloES: 'Tragos Especiales',
         itens: [
           'Caipirinha',
           'Caipvodka',
@@ -251,17 +503,49 @@ export const servicos: Servico[] = [
           'Fitzgerald',
           '1 rodada de shot (Bananinha ou Tequila)',
         ],
+        itensEN: [
+          'Caipirinha',
+          'Caipvodka',
+          'Gin and tonic',
+          'Gin with berries',
+          'Moscow Mule',
+          'Fitzgerald',
+          '1 round of shots (Bananinha or Tequila)',
+        ],
+        itensES: [
+          'Caipirinha',
+          'Caipvodka',
+          'Gin tonic',
+          'Gin con frutos rojos',
+          'Moscow Mule',
+          'Fitzgerald',
+          '1 ronda de shots (Bananinha o Tequila)',
+        ],
       },
       {
         titulo: 'Bebidas Premium',
+        tituloEN: 'Premium Beverages',
+        tituloES: 'Bebidas Premium',
         itens: [
           'Vodka Absolut, Cachaca Sagatiba, Gin Gordon\'s',
           'Cerveja 2,5L por pessoa: Heineken ou Stella',
           'Coca-Cola (normal e zero), Guarana, agua com e sem gas, sucos naturais',
         ],
+        itensEN: [
+          'Vodka Absolut, Cachaca Sagatiba, Gin Gordon\'s',
+          'Beer 2.5L per person: Heineken or Stella',
+          'Coca-Cola (regular and zero), Guarana, sparkling and still water, natural juices',
+        ],
+        itensES: [
+          'Vodka Absolut, Cachaca Sagatiba, Gin Gordon\'s',
+          'Cerveza 2,5L por persona: Heineken o Stella',
+          'Coca-Cola (normal y zero), Guarana, agua con y sin gas, jugos naturales',
+        ],
       },
       {
         titulo: 'Frutas disponiveis (escolha ate 4)',
+        tituloEN: 'Available fruits (choose up to 4)',
+        tituloES: 'Frutas disponibles (elige hasta 4)',
         itens: [
           'Limao',
           'Maracuja',
@@ -270,6 +554,24 @@ export const servicos: Servico[] = [
           'Morango',
           'Tangerina',
           'Caju',
+        ],
+        itensEN: [
+          'Lime',
+          'Passion fruit',
+          'Pineapple',
+          'Watermelon',
+          'Strawberry',
+          'Tangerine',
+          'Cashew fruit',
+        ],
+        itensES: [
+          'Limon',
+          'Maracuya',
+          'Pina',
+          'Sandia',
+          'Fresa',
+          'Mandarina',
+          'Maranon',
         ],
       },
     ],
@@ -279,6 +581,8 @@ export const servicos: Servico[] = [
   {
     id: 'open-bar-basico',
     nome: 'Open Bar Basico',
+    nomeEN: 'Basic Open Bar',
+    nomeES: 'Open Bar Basico',
     categoria: 'openbar',
     tipo: 'por_pessoa',
     premium: false,
@@ -288,10 +592,12 @@ export const servicos: Servico[] = [
       { min: 16, max: 20, valorPorPessoa: 140 },
       { min: 21, max: 25, valorPorPessoa: 135 },
     ],
-    staff: { descricao: '1 Barman', quantidade: 1 },
+    staff: { descricao: '1 Barman', descricaoEN: '1 Bartender', descricaoES: '1 Barman', quantidade: 1 },
     secoes: [
       {
         titulo: 'Drinks',
+        tituloEN: 'Cocktails',
+        tituloES: 'Tragos',
         itens: [
           'Caipirinha',
           'Caipvodka',
@@ -299,17 +605,45 @@ export const servicos: Servico[] = [
           'Gin com frutas vermelhas',
           '1 rodada de shot (Bananinha ou Tequila)',
         ],
+        itensEN: [
+          'Caipirinha',
+          'Caipvodka',
+          'Gin and tonic',
+          'Gin with berries',
+          '1 round of shots (Bananinha or Tequila)',
+        ],
+        itensES: [
+          'Caipirinha',
+          'Caipvodka',
+          'Gin tonic',
+          'Gin con frutos rojos',
+          '1 ronda de shots (Bananinha o Tequila)',
+        ],
       },
       {
         titulo: 'Bebidas',
+        tituloEN: 'Beverages',
+        tituloES: 'Bebidas',
         itens: [
           'Vodka Smirnoff, Cachaca Pitu ou 51, Gin Seagers',
           'Cerveja 2,5L por pessoa: Brahma ou Original',
           'Coca-Cola (normal e zero), Guarana, agua com e sem gas, sucos naturais',
         ],
+        itensEN: [
+          'Vodka Smirnoff, Cachaca Pitu or 51, Gin Seagers',
+          'Beer 2.5L per person: Brahma or Original',
+          'Coca-Cola (regular and zero), Guarana, sparkling and still water, natural juices',
+        ],
+        itensES: [
+          'Vodka Smirnoff, Cachaca Pitu o 51, Gin Seagers',
+          'Cerveza 2,5L por persona: Brahma u Original',
+          'Coca-Cola (normal y zero), Guarana, agua con y sin gas, jugos naturales',
+        ],
       },
       {
         titulo: 'Frutas disponiveis (escolha ate 4)',
+        tituloEN: 'Available fruits (choose up to 4)',
+        tituloES: 'Frutas disponibles (elige hasta 4)',
         itens: [
           'Limao',
           'Maracuja',
@@ -317,6 +651,22 @@ export const servicos: Servico[] = [
           'Melancia',
           'Tangerina',
           'Caju',
+        ],
+        itensEN: [
+          'Lime',
+          'Passion fruit',
+          'Pineapple',
+          'Watermelon',
+          'Tangerine',
+          'Cashew fruit',
+        ],
+        itensES: [
+          'Limon',
+          'Maracuya',
+          'Pina',
+          'Sandia',
+          'Mandarina',
+          'Maranon',
         ],
       },
     ],
@@ -326,6 +676,8 @@ export const servicos: Servico[] = [
   {
     id: 'open-bar-premium',
     nome: 'Open Bar Premium',
+    nomeEN: 'Premium Open Bar',
+    nomeES: 'Open Bar Premium',
     categoria: 'openbar',
     tipo: 'por_pessoa',
     premium: true,
@@ -335,10 +687,12 @@ export const servicos: Servico[] = [
       { min: 16, max: 20, valorPorPessoa: 170 },
       { min: 21, max: 25, valorPorPessoa: 160 },
     ],
-    staff: { descricao: '1 Barman', quantidade: 1 },
+    staff: { descricao: '1 Barman', descricaoEN: '1 Bartender', descricaoES: '1 Barman', quantidade: 1 },
     secoes: [
       {
         titulo: 'Drinks Especiais',
+        tituloEN: 'Signature Cocktails',
+        tituloES: 'Tragos Especiales',
         itens: [
           'Caipirinha',
           'Caipvodka',
@@ -348,17 +702,49 @@ export const servicos: Servico[] = [
           'Fitzgerald',
           '1 rodada de shot (Bananinha ou Tequila)',
         ],
+        itensEN: [
+          'Caipirinha',
+          'Caipvodka',
+          'Gin and tonic',
+          'Gin with berries',
+          'Moscow Mule',
+          'Fitzgerald',
+          '1 round of shots (Bananinha or Tequila)',
+        ],
+        itensES: [
+          'Caipirinha',
+          'Caipvodka',
+          'Gin tonic',
+          'Gin con frutos rojos',
+          'Moscow Mule',
+          'Fitzgerald',
+          '1 ronda de shots (Bananinha o Tequila)',
+        ],
       },
       {
         titulo: 'Bebidas Premium',
+        tituloEN: 'Premium Beverages',
+        tituloES: 'Bebidas Premium',
         itens: [
           'Vodka Absolut, Cachaca Sagatiba, Gin Gordon\'s',
           'Cerveja 2,5L por pessoa: Heineken ou Stella',
           'Coca-Cola (normal e zero), Guarana, agua com e sem gas, sucos naturais',
         ],
+        itensEN: [
+          'Vodka Absolut, Cachaca Sagatiba, Gin Gordon\'s',
+          'Beer 2.5L per person: Heineken or Stella',
+          'Coca-Cola (regular and zero), Guarana, sparkling and still water, natural juices',
+        ],
+        itensES: [
+          'Vodka Absolut, Cachaca Sagatiba, Gin Gordon\'s',
+          'Cerveza 2,5L por persona: Heineken o Stella',
+          'Coca-Cola (normal y zero), Guarana, agua con y sin gas, jugos naturales',
+        ],
       },
       {
         titulo: 'Frutas disponiveis (escolha ate 4)',
+        tituloEN: 'Available fruits (choose up to 4)',
+        tituloES: 'Frutas disponibles (elige hasta 4)',
         itens: [
           'Limao',
           'Maracuja',
@@ -368,6 +754,24 @@ export const servicos: Servico[] = [
           'Tangerina',
           'Caju',
         ],
+        itensEN: [
+          'Lime',
+          'Passion fruit',
+          'Pineapple',
+          'Watermelon',
+          'Strawberry',
+          'Tangerine',
+          'Cashew fruit',
+        ],
+        itensES: [
+          'Limon',
+          'Maracuya',
+          'Pina',
+          'Sandia',
+          'Fresa',
+          'Mandarina',
+          'Maranon',
+        ],
       },
     ],
   },
@@ -376,6 +780,8 @@ export const servicos: Servico[] = [
   {
     id: 'mesa-queijos-vinhos',
     nome: 'Mesa de Queijos & Vinhos',
+    nomeEN: 'Cheese & Wine Board',
+    nomeES: 'Mesa de Quesos & Vinos',
     categoria: 'mesa',
     tipo: 'por_pessoa',
     premium: false,
@@ -388,6 +794,8 @@ export const servicos: Servico[] = [
     secoes: [
       {
         titulo: 'Queijos',
+        tituloEN: 'Cheeses',
+        tituloES: 'Quesos',
         itens: [
           'Brie',
           'Gouda',
@@ -395,27 +803,73 @@ export const servicos: Servico[] = [
           'Minas Padrao',
           'Gorgonzola',
         ],
+        itensEN: [
+          'Brie',
+          'Gouda',
+          'Shaved Parmesan',
+          'Minas cheese',
+          'Gorgonzola',
+        ],
+        itensES: [
+          'Brie',
+          'Gouda',
+          'Parmesano en lascas',
+          'Queso Minas',
+          'Gorgonzola',
+        ],
       },
       {
         titulo: 'Acompanhamentos',
+        tituloEN: 'Accompaniments',
+        tituloES: 'Acompanamientos',
         itens: [
           'Uvas, damasco seco, mix de castanhas',
           'Geleia de frutas vermelhas, mel',
           'Paes variados (ciabatta, grissini)',
           'Azeitonas verdes',
         ],
+        itensEN: [
+          'Grapes, dried apricots, mixed nuts',
+          'Berry jam, honey',
+          'Assorted breads (ciabatta, grissini)',
+          'Green olives',
+        ],
+        itensES: [
+          'Uvas, damasco seco, mix de frutos secos',
+          'Jalea de frutos rojos, miel',
+          'Panes variados (ciabatta, grissini)',
+          'Aceitunas verdes',
+        ],
       },
       {
         titulo: 'Vinhos',
+        tituloEN: 'Wines',
+        tituloES: 'Vinos',
         itens: [
           'Branco (Chardonnay ou Sauvignon Blanc)',
+          'Espumante Brut',
+        ],
+        itensEN: [
+          'White (Chardonnay or Sauvignon Blanc)',
+          'Brut Sparkling Wine',
+        ],
+        itensES: [
+          'Blanco (Chardonnay o Sauvignon Blanc)',
           'Espumante Brut',
         ],
       },
       {
         titulo: 'Bebidas',
+        tituloEN: 'Beverages',
+        tituloES: 'Bebidas',
         itens: [
           'Coca-Cola (normal e zero), Guarana, agua com e sem gas, sucos naturais',
+        ],
+        itensEN: [
+          'Coca-Cola (regular and zero), Guarana, sparkling and still water, natural juices',
+        ],
+        itensES: [
+          'Coca-Cola (normal y zero), Guarana, agua con y sin gas, jugos naturales',
         ],
       },
     ],
@@ -425,6 +879,8 @@ export const servicos: Servico[] = [
   {
     id: 'mesa-snacks-premium',
     nome: 'Mesa de Snacks Premium',
+    nomeEN: 'Premium Snack Board',
+    nomeES: 'Mesa de Snacks Premium',
     categoria: 'mesa',
     tipo: 'por_pessoa',
     premium: true,
@@ -437,39 +893,93 @@ export const servicos: Servico[] = [
     secoes: [
       {
         titulo: 'Classicos da Mesa',
+        tituloEN: 'Board Classics',
+        tituloES: 'Clasicos de la Mesa',
         itens: [
           'Quiches grandes (Alho-poro / Tomate seco)',
           'Mini wraps frios (Peru com cream cheese)',
           'Focaccia artesanal com azeite trufado',
           'Grissinos crocantes com parmesao e ervas',
         ],
+        itensEN: [
+          'Large quiches (Leek / Sun-dried tomato)',
+          'Cold mini wraps (Turkey with cream cheese)',
+          'Artisan focaccia with truffle oil',
+          'Crunchy grissini with Parmesan and herbs',
+        ],
+        itensES: [
+          'Quiches grandes (Puerro / Tomate seco)',
+          'Mini wraps frios (Pavo con queso crema)',
+          'Focaccia artesanal con aceite trufado',
+          'Grissinis crocantes con parmesano y hierbas',
+        ],
       },
       {
         titulo: 'Tabuas & Finger Foods',
+        tituloEN: 'Boards & Finger Foods',
+        tituloES: 'Tablas & Finger Foods',
         itens: [
           'Tabua de Frios e Queijos (gorgonzola, prato, bola, peito de peru, azeitona, uva, tomatinho, presunto)',
           'Espetinhos Caprese com reducao de balsamico',
           'Mix de nuts e frutas secas',
         ],
+        itensEN: [
+          'Cold cuts & Cheese board (gorgonzola, muenster, edam, turkey breast, olives, grapes, cherry tomatoes, ham)',
+          'Caprese skewers with balsamic reduction',
+          'Mixed nuts and dried fruits',
+        ],
+        itensES: [
+          'Tabla de Fiambres y Quesos (gorgonzola, queso prato, queso bola, pechuga de pavo, aceituna, uva, tomate cherry, jamon)',
+          'Brochetas Caprese con reduccion de balsamico',
+          'Mix de frutos secos',
+        ],
       },
       {
         titulo: 'Refrescantes & Acompanhamentos',
+        tituloEN: 'Refreshments & Sides',
+        tituloES: 'Refrescantes & Acompanamientos',
         itens: [
           'Caponata + torradas',
           'Ovos de codorna temperados',
           'Tabua de frutas (morango, uva, kiwi e melancia)',
           'Cesta de paes + trio de pastas artesanais',
         ],
+        itensEN: [
+          'Caponata + toasts',
+          'Seasoned quail eggs',
+          'Fruit board (strawberry, grape, kiwi and watermelon)',
+          'Bread basket + trio of artisan spreads',
+        ],
+        itensES: [
+          'Caponata + tostadas',
+          'Huevos de codorniz sazonados',
+          'Tabla de frutas (fresa, uva, kiwi y sandia)',
+          'Canasta de panes + trio de pastas artesanales',
+        ],
       },
       {
         titulo: 'Bebidas',
+        tituloEN: 'Beverages',
+        tituloES: 'Bebidas',
         itens: [
           'Coca-Cola (normal e zero), Guarana, agua com e sem gas, sucos naturais',
+        ],
+        itensEN: [
+          'Coca-Cola (regular and zero), Guarana, sparkling and still water, natural juices',
+        ],
+        itensES: [
+          'Coca-Cola (normal y zero), Guarana, agua con y sin gas, jugos naturales',
         ],
       },
     ],
     observacoes: [
       'Alguns itens podem nao ter disponibilidade no dia. As quantidades serao ajustadas para compensar a falta de um deles.',
+    ],
+    observacoesEN: [
+      'Some items may not be available on the day. Quantities will be adjusted to compensate.',
+    ],
+    observacoesES: [
+      'Algunos items pueden no estar disponibles el dia del evento. Las cantidades seran ajustadas para compensar.',
     ],
   },
 
@@ -477,6 +987,8 @@ export const servicos: Servico[] = [
   {
     id: 'kit-festa-decoracao-premium',
     nome: 'Kit Festa e Decoracao Premium',
+    nomeEN: 'Premium Party & Decoration Kit',
+    nomeES: 'Kit Fiesta y Decoracion Premium',
     categoria: 'decoracao',
     tipo: 'por_embarcacao',
     premium: true,
@@ -487,26 +999,62 @@ export const servicos: Servico[] = [
     secoes: [
       {
         titulo: 'Mesa e Doces',
+        tituloEN: 'Cake Table & Sweets',
+        tituloES: 'Mesa y Dulces',
         itens: [
           'Mesa de bolo decorada',
           'Bolo (quantidade de fatias varia conforme tamanho da embarcacao)',
           'Doces gourmet (quantidade varia conforme tamanho da embarcacao)',
           '10 cupcakes decorados',
         ],
+        itensEN: [
+          'Decorated cake table',
+          'Cake (number of slices varies by boat size)',
+          'Gourmet sweets (quantity varies by boat size)',
+          '10 decorated cupcakes',
+        ],
+        itensES: [
+          'Mesa de pastel decorada',
+          'Pastel (cantidad de porciones varia segun tamano de la embarcacion)',
+          'Dulces gourmet (cantidad varia segun tamano de la embarcacion)',
+          '10 cupcakes decorados',
+        ],
       },
       {
         titulo: 'Decoracao Externa',
+        tituloEN: 'Exterior Decoration',
+        tituloES: 'Decoracion Externa',
         itens: [
           'Ornamentacao externa personalizada',
           'Arco de bolas decorativo',
           'Ornamentacao natural com flores e folhagens',
         ],
+        itensEN: [
+          'Custom exterior decoration',
+          'Decorative balloon arch',
+          'Natural decoration with flowers and foliage',
+        ],
+        itensES: [
+          'Ornamentacion externa personalizada',
+          'Arco de globos decorativo',
+          'Ornamentacion natural con flores y follajes',
+        ],
       },
       {
         titulo: 'Acessorios e Conforto',
+        tituloEN: 'Accessories & Comfort',
+        tituloES: 'Accesorios y Confort',
         itens: [
           'Almofadas decorativas',
           'Faixa tematica personalizada',
+        ],
+        itensEN: [
+          'Decorative cushions',
+          'Custom themed banner',
+        ],
+        itensES: [
+          'Almohadas decorativas',
+          'Faja tematica personalizada',
         ],
       },
     ],
@@ -516,12 +1064,26 @@ export const servicos: Servico[] = [
       'Acima de 50 pes, consulte valores especiais',
       'Decoracao avulsa, somente bolos e doces, ou personalizacao: consulte valores',
     ],
+    observacoesEN: [
+      'Up to 36 feet: 15-slice cake + 50 gourmet sweets',
+      'Up to 50 feet: 20-slice cake + 100 gourmet sweets',
+      'Over 50 feet, contact us for special pricing',
+      'Individual decoration, cakes/sweets only, or customization: contact for pricing',
+    ],
+    observacoesES: [
+      'Hasta 36 pies: Pastel 15 porciones + 50 dulces gourmet',
+      'Hasta 50 pies: Pastel 20 porciones + 100 dulces gourmet',
+      'Mas de 50 pies, consulte valores especiales',
+      'Decoracion suelta, solo pasteles y dulces, o personalizacion: consulte valores',
+    ],
   },
 
   // ==================== 11. KIT DESPEDIDA DE SOLTEIRA ====================
   {
     id: 'kit-despedida-solteira',
     nome: 'Kit Despedida de Solteira',
+    nomeEN: 'Bachelorette Party Kit',
+    nomeES: 'Kit Despedida de Soltera',
     categoria: 'decoracao',
     tipo: 'por_pessoa',
     premium: false,
@@ -534,6 +1096,8 @@ export const servicos: Servico[] = [
     secoes: [
       {
         titulo: 'Itens Personalizados',
+        tituloEN: 'Personalized Items',
+        tituloES: 'Items Personalizados',
         itens: [
           'Cupcakes (2 modelos)',
           'Docinhos (3 por pessoa)',
@@ -543,9 +1107,29 @@ export const servicos: Servico[] = [
           'Adesivos ou tatuagens temporarias',
           'Plaquinhas para fotos',
         ],
+        itensEN: [
+          'Cupcakes (2 designs)',
+          'Mini sweets (3 per person)',
+          'Themed straws',
+          'Metallic balloons',
+          '"Bride" sash + "Bride\'s Crew" sashes',
+          'Stickers or temporary tattoos',
+          'Photo prop signs',
+        ],
+        itensES: [
+          'Cupcakes (2 modelos)',
+          'Dulcecitos (3 por persona)',
+          'Sorbetes tematicos',
+          'Globos metalizados',
+          'Faja "Novia" + fajas "Team Novia"',
+          'Stickers o tatuajes temporales',
+          'Carteles para fotos',
+        ],
       },
       {
         titulo: 'Extras',
+        tituloEN: 'Extras',
+        tituloES: 'Extras',
         itens: [
           'Shot especial',
           'Bolo tematico',
@@ -553,6 +1137,22 @@ export const servicos: Servico[] = [
           'Copinhos com Nutella e morango',
           'Kits ressaca (Engov + agua de coco + KitKat)',
           'Copos de shot personalizados',
+        ],
+        itensEN: [
+          'Special shot',
+          'Themed cake',
+          'Candy board (gummies, marshmallow, lollipops, sour candy)',
+          'Nutella and strawberry cups',
+          'Hangover kits (Engov + coconut water + KitKat)',
+          'Personalized shot glasses',
+        ],
+        itensES: [
+          'Shot especial',
+          'Pastel tematico',
+          'Tabla de dulces (gomitas, marshmallow, chupetines, caramelos acidos)',
+          'Vasitos con Nutella y fresa',
+          'Kits resaca (Engov + agua de coco + KitKat)',
+          'Vasos de shot personalizados',
         ],
       },
     ],
@@ -562,19 +1162,35 @@ export const servicos: Servico[] = [
   {
     id: 'dj-com-equipamento',
     nome: 'DJ com Equipamento de Som',
+    nomeEN: 'DJ with Sound Equipment',
+    nomeES: 'DJ con Equipo de Sonido',
     categoria: 'entretenimento',
     tipo: 'fixo',
     premium: false,
     precoFixo: 1500,
-    staff: { descricao: 'DJ profissional', quantidade: 1 },
+    staff: { descricao: 'DJ profissional', descricaoEN: 'Professional DJ', descricaoES: 'DJ profesional', quantidade: 1 },
     secoes: [
       {
         titulo: 'Servico completo',
+        tituloEN: 'Full Service',
+        tituloES: 'Servicio completo',
         itens: [
           'DJ profissional',
           'Equipamento de som completo',
           'Playlist personalizada',
           'Duracao do evento',
+        ],
+        itensEN: [
+          'Professional DJ',
+          'Complete sound equipment',
+          'Custom playlist',
+          'Full event duration',
+        ],
+        itensES: [
+          'DJ profesional',
+          'Equipo de sonido completo',
+          'Playlist personalizada',
+          'Duracion del evento',
         ],
       },
     ],
@@ -584,17 +1200,31 @@ export const servicos: Servico[] = [
   {
     id: 'fotografo',
     nome: 'Fotografo',
+    nomeEN: 'Photographer',
+    nomeES: 'Fotografo',
     categoria: 'entretenimento',
     tipo: 'fixo',
     premium: false,
     precoFixo: 800,
-    staff: { descricao: 'Fotografo profissional', quantidade: 1 },
+    staff: { descricao: 'Fotografo profissional', descricaoEN: 'Professional Photographer', descricaoES: 'Fotografo profesional', quantidade: 1 },
     secoes: [
       {
         titulo: 'Servico completo',
+        tituloEN: 'Full Service',
+        tituloES: 'Servicio completo',
         itens: [
           'Fotografo profissional',
           'Fotos editadas em alta resolucao',
+          'Entrega digital',
+        ],
+        itensEN: [
+          'Professional photographer',
+          'High-resolution edited photos',
+          'Digital delivery',
+        ],
+        itensES: [
+          'Fotografo profesional',
+          'Fotos editadas en alta resolucion',
           'Entrega digital',
         ],
       },

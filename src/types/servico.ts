@@ -6,11 +6,17 @@ export interface FaixaPreco {
 
 export interface SecaoServico {
   titulo: string;
+  tituloEN?: string;
+  tituloES?: string;
   itens: string[];
+  itensEN?: string[];
+  itensES?: string[];
 }
 
 export interface Staff {
   descricao: string;
+  descricaoEN?: string;
+  descricaoES?: string;
   quantidade: number;
 }
 
@@ -32,6 +38,8 @@ export type TipoPreco = 'por_pessoa' | 'fixo' | 'por_embarcacao';
 export interface Servico {
   id: string;
   nome: string;
+  nomeEN?: string;
+  nomeES?: string;
   categoria: CategoriaServico;
   tipo: TipoPreco;
   premium: boolean;
@@ -42,7 +50,11 @@ export interface Servico {
   staff?: Staff;
   secoes: SecaoServico[];
   opcionais?: string[];
+  opcionaisEN?: string[];
+  opcionaisES?: string[];
   observacoes?: string[];
+  observacoesEN?: string[];
+  observacoesES?: string[];
 }
 
 export interface CategoriaInfo {

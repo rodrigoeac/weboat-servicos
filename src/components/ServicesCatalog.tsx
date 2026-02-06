@@ -1,5 +1,4 @@
 import type { Servico, CategoriaServico } from '../types/servico.ts';
-import { servicos } from '../data/servicos.ts';
 import { CATEGORIAS } from '../constants.ts';
 import { ServiceCard } from './ServiceCard.tsx';
 import type { createT } from '../i18n.ts';
@@ -8,6 +7,7 @@ interface ServicesCatalogProps {
   categoriaAtiva: CategoriaServico | null;
   servicosSelecionadosIds: Set<string>;
   numConvidados: number;
+  servicos: Servico[];
   onToggle: (servico: Servico) => void;
   t: ReturnType<typeof createT>;
 }
@@ -16,6 +16,7 @@ export function ServicesCatalog({
   categoriaAtiva,
   servicosSelecionadosIds,
   numConvidados,
+  servicos,
   onToggle,
   t,
 }: ServicesCatalogProps) {

@@ -16,6 +16,7 @@ export default function App() {
     categoriaAtiva,
     servicosSelecionadosIds,
     servicosSelecionados,
+    servicosTraduzidos,
     resultado,
     temKitFesta,
     setTamanhoEmbarcacao,
@@ -43,6 +44,7 @@ export default function App() {
               categoriaAtiva={categoriaAtiva}
               servicosSelecionadosIds={servicosSelecionadosIds}
               numConvidados={numConvidados}
+              servicos={servicosTraduzidos}
               onToggle={toggleServico}
               t={t}
             />
