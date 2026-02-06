@@ -64,6 +64,10 @@ export function useSimulacao() {
     setNumConvidados((n) => Math.max(n - 1, CONVIDADOS_MIN));
   }, []);
 
+  const limparSelecao = useCallback(() => {
+    setServicosSelecionadosIds(new Set());
+  }, []);
+
   const handleConvidadosChange = useCallback((value: number) => {
     const clamped = Math.max(CONVIDADOS_MIN, Math.min(CONVIDADOS_MAX, value));
     setNumConvidados(clamped);
@@ -87,5 +91,6 @@ export function useSimulacao() {
     incrementarConvidados,
     decrementarConvidados,
     handleConvidadosChange,
+    limparSelecao,
   };
 }

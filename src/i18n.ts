@@ -64,6 +64,7 @@ const translations = {
   'sim.verSimulacao': { pt: 'Ver simulacao', en: 'View estimate', es: 'Ver simulacion' },
   'sim.consultar': { pt: 'Consultar', en: 'Contact us', es: 'Consultar' },
   'sim.cobrancaMinima': { pt: 'min. {n} pax', en: 'min. {n} pax', es: 'min. {n} pax' },
+  'sim.limpar': { pt: 'Limpar selecao', en: 'Clear selection', es: 'Limpiar seleccion' },
   'sim.diminuir': { pt: 'Diminuir convidados', en: 'Decrease guests', es: 'Disminuir invitados' },
   'sim.aumentar': { pt: 'Aumentar convidados', en: 'Increase guests', es: 'Aumentar invitados' },
 

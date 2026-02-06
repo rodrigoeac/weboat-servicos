@@ -25,6 +25,7 @@ export default function App() {
     incrementarConvidados,
     decrementarConvidados,
     handleConvidadosChange,
+    limparSelecao,
   } = useSimulacao();
 
   return (
@@ -62,6 +63,7 @@ export default function App() {
               onDecrementar={decrementarConvidados}
               onConvidadosChange={handleConvidadosChange}
               onTamanhoChange={setTamanhoEmbarcacao}
+              onLimpar={limparSelecao}
               t={t}
             />
           </aside>
@@ -84,6 +86,7 @@ export default function App() {
         onDecrementar={decrementarConvidados}
         onConvidadosChange={handleConvidadosChange}
         onTamanhoChange={setTamanhoEmbarcacao}
+        onLimpar={limparSelecao}
         t={t}
       />
     </div>

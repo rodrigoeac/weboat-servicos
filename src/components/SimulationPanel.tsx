@@ -15,6 +15,7 @@ interface SimulationPanelProps {
   onDecrementar: () => void;
   onConvidadosChange: (value: number) => void;
   onTamanhoChange: (t: TamanhoEmbarcacao) => void;
+  onLimpar: () => void;
   t: ReturnType<typeof createT>;
 }
 
@@ -28,13 +29,24 @@ export function SimulationPanel({
   onDecrementar,
   onConvidadosChange,
   onTamanhoChange,
+  onLimpar,
   t,
 }: SimulationPanelProps) {
   return (
     <div className="bg-white rounded-xl border border-border-light shadow-md p-5 sticky top-16 space-y-5">
-      <h2 className="font-display font-bold text-lg text-ocean-deep">
-        {t('sim.titulo')}
-      </h2>
+      <div className="flex items-center justify-between">
+        <h2 className="font-display font-bold text-lg text-ocean-deep">
+          {t('sim.titulo')}
+        </h2>
+        {resultado.itens.length > 0 && (
+          <button
+            onClick={onLimpar}
+            className="font-heading text-xs text-wave-blue hover:text-ocean-deep transition-colors"
+          >
+            {t('sim.limpar')}
+          </button>
+        )}
+      </div>
 
       {/* Guest count */}
       <div>

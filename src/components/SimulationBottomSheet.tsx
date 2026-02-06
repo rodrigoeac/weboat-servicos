@@ -16,6 +16,7 @@ interface SimulationBottomSheetProps {
   onDecrementar: () => void;
   onConvidadosChange: (value: number) => void;
   onTamanhoChange: (t: TamanhoEmbarcacao) => void;
+  onLimpar: () => void;
   t: ReturnType<typeof createT>;
 }
 
@@ -29,6 +30,7 @@ export function SimulationBottomSheet({
   onDecrementar,
   onConvidadosChange,
   onTamanhoChange,
+  onLimpar,
   t,
 }: SimulationBottomSheetProps) {
   const [expandido, setExpandido] = useState(false);
@@ -96,9 +98,19 @@ export function SimulationBottomSheet({
         {/* Expanded content */}
         {expandido && (
           <div className="px-5 pb-5 space-y-4 animate-fadeIn">
-            <h2 className="font-display font-bold text-lg text-ocean-deep">
-              {t('sim.titulo')}
-            </h2>
+            <div className="flex items-center justify-between">
+              <h2 className="font-display font-bold text-lg text-ocean-deep">
+                {t('sim.titulo')}
+              </h2>
+              {temServicos && (
+                <button
+                  onClick={onLimpar}
+                  className="font-heading text-xs text-wave-blue hover:text-ocean-deep transition-colors"
+                >
+                  {t('sim.limpar')}
+                </button>
+              )}
+            </div>
 
             {/* Guest count */}
             <div>
