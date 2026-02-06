@@ -121,7 +121,7 @@ export function ServiceCard({
           style={{ gridTemplateRows: expandido ? '1fr' : '0fr' }}
         >
           <div className="overflow-hidden min-h-0">
-            <ServiceCardDetails servico={servico} t={t} />
+            <ServiceCardDetails servico={servico} numConvidados={numConvidados} t={t} />
           </div>
         </div>
       </div>

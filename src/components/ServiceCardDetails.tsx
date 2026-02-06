@@ -4,10 +4,11 @@ import type { createT } from '../i18n.ts';
 
 interface ServiceCardDetailsProps {
   servico: Servico;
+  numConvidados?: number;
   t: ReturnType<typeof createT>;
 }
 
-export function ServiceCardDetails({ servico, t }: ServiceCardDetailsProps) {
+export function ServiceCardDetails({ servico, numConvidados, t }: ServiceCardDetailsProps) {
   return (
     <div className="mt-4 space-y-4">
       {servico.secoes.map((secao) => (
@@ -49,7 +50,7 @@ export function ServiceCardDetails({ servico, t }: ServiceCardDetailsProps) {
         </div>
       )}
 
-      <PricingTable servico={servico} t={t} />
+      <PricingTable servico={servico} numConvidados={numConvidados} t={t} />
 
       {servico.observacoes && servico.observacoes.length > 0 && (
         <div className="bg-pearl-gray rounded-lg px-4 py-3">

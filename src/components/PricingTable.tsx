@@ -4,10 +4,11 @@ import type { createT } from '../i18n.ts';
 
 interface PricingTableProps {
   servico: Servico;
+  numConvidados?: number;
   t: ReturnType<typeof createT>;
 }
 
-export function PricingTable({ servico, t }: PricingTableProps) {
+export function PricingTable({ servico, numConvidados, t }: PricingTableProps) {
   if (servico.tipo === 'fixo') {
     return (
       <div className="bg-pearl-gray rounded-lg p-4">
@@ -73,10 +74,14 @@ export function PricingTable({ servico, t }: PricingTableProps) {
           {t('pricing.valoresPorPessoa')}
         </div>
         <div className="space-y-1.5">
-          {servico.faixasPreco.map((faixa) => (
+          {servico.faixasPreco.map((faixa) => {
+            const isActive = numConvidados !== undefined && numConvidados >= faixa.min && numConvidados <= faixa.max;
+            const isAboveMax = numConvidados !== undefined && faixa === servico.faixasPreco![servico.faixasPreco!.length - 1] && numConvidados > faixa.max;
+            const highlight = isActive || isAboveMax;
+            return (
             <div
               key={`${faixa.min}-${faixa.max}`}
-              className="flex justify-between items-center bg-white rounded-md px-3 py-2"
+              className={`flex justify-between items-center rounded-md px-3 py-2 transition-colors ${highlight ? 'bg-ocean-deep/10 ring-1 ring-ocean-deep/30' : 'bg-white'}`}
             >
               <span className="font-body text-sm text-charcoal">
                 {faixa.min === faixa.max
@@ -87,7 +92,8 @@ export function PricingTable({ servico, t }: PricingTableProps) {
                 {formatCurrency(faixa.valorPorPessoa)}
               </span>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     );
