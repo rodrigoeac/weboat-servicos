@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import type { Servico } from '../types/servico.ts';
 import { PremiumBadge } from './PremiumBadge.tsx';
 import { ServiceCardDetails } from './ServiceCardDetails.tsx';
@@ -22,6 +22,17 @@ export function ServiceCard({
   t,
 }: ServiceCardProps) {
   const [expandido, setExpandido] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleToggle = () => {
+    if (!selecionado) {
+      cardRef.current?.classList.remove('animate-selectPulse');
+      // Force reflow to restart animation
+      void cardRef.current?.offsetWidth;
+      cardRef.current?.classList.add('animate-selectPulse');
+    }
+    onToggle(servico);
+  };
 
   const minimoConvidados = getMinimoConvidados(servico);
   const abaixoMinimo = servico.tipo === 'por_pessoa' && minimoConvidados > 0 && numConvidados < minimoConvidados;
@@ -43,6 +54,7 @@ export function ServiceCard({
 
   return (
     <div
+      ref={cardRef}
       className={`
         bg-white rounded-xl border transition-all duration-250
         ${selecionado ? 'border-ocean-deep shadow-lg ring-2 ring-ocean-deep/20' : 'border-border-light shadow-sm'}
@@ -55,7 +67,7 @@ export function ServiceCard({
           <input
             type="checkbox"
             checked={selecionado}
-            onChange={() => onToggle(servico)}
+            onChange={handleToggle}
             className="mt-1 shrink-0 cursor-pointer"
             aria-label={`${t('service.selecionar')} ${servico.nome}`}
           />
