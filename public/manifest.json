@@ -1,0 +1,16 @@
+{
+  "name": "WeBoat Servicos",
+  "short_name": "WeBoat",
+  "description": "Catalogo de servicos adicionais para eventos em embarcacoes da WeBoat Brasil",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFAF8",
+  "theme_color": "#1E3A5F",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
