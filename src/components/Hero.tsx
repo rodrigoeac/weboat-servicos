@@ -14,33 +14,42 @@ const IDIOMAS: { id: Idioma; label: string }[] = [
 ];
 
 export function Hero({ t, idioma, onIdiomaChange }: HeroProps) {
+  const languagePills = (
+    <div className="flex gap-1">
+      {IDIOMAS.map((lang) => (
+        <button
+          key={lang.id}
+          onClick={() => onIdiomaChange(lang.id)}
+          className={`
+            px-2.5 py-1 rounded font-heading text-xs font-medium transition-colors
+            ${idioma === lang.id
+              ? 'bg-white text-ocean-deep'
+              : 'bg-white/15 text-white/70 hover:bg-white/25'}
+          `}
+        >
+          {lang.label}
+        </button>
+      ))}
+    </div>
+  );
+
   return (
     <section className="bg-ocean-deep text-white py-10 px-6 lg:py-14">
-      <div className="max-w-5xl mx-auto">
-        {/* Top bar: logo + language switcher */}
-        <div className="flex items-center justify-between mb-6">
+      <div className="max-w-5xl mx-auto relative">
+        {/* Logo — always centered */}
+        <div className="flex justify-center mb-6">
           <img
             src="/logo.svg"
             alt="WeBoat Brasil"
             className="h-8 lg:h-10"
           />
-          <div className="flex gap-1">
-            {IDIOMAS.map((lang) => (
-              <button
-                key={lang.id}
-                onClick={() => onIdiomaChange(lang.id)}
-                className={`
-                  px-2.5 py-1 rounded font-heading text-xs font-medium transition-colors
-                  ${idioma === lang.id
-                    ? 'bg-white text-ocean-deep'
-                    : 'bg-white/15 text-white/70 hover:bg-white/25'}
-                `}
-              >
-                {lang.label}
-              </button>
-            ))}
-          </div>
         </div>
+
+        {/* Desktop language switcher — top right */}
+        <div className="hidden lg:block absolute top-0 right-0">
+          {languagePills}
+        </div>
+
         {/* Heading */}
         <div className="text-center">
           <h1 className="font-display font-bold text-3xl lg:text-4xl mb-3">
@@ -49,6 +58,11 @@ export function Hero({ t, idioma, onIdiomaChange }: HeroProps) {
           <p className="font-body text-lg text-white/80 max-w-2xl mx-auto">
             {t('hero.subtitle')}
           </p>
+        </div>
+
+        {/* Mobile language switcher — below heading */}
+        <div className="flex justify-center mt-5 lg:hidden">
+          {languagePills}
         </div>
       </div>
     </section>
