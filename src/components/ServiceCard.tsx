@@ -3,6 +3,7 @@ import type { Servico } from '../types/servico.ts';
 import { PremiumBadge } from './PremiumBadge.tsx';
 import { ServiceCardDetails } from './ServiceCardDetails.tsx';
 import { getPrecoMinimo, getMinimoConvidados } from '../utils/calcularSimulacao.ts';
+import { trackEvent } from '../utils/analytics.ts';
 import { formatCurrency } from '../utils/formatCurrency.ts';
 import type { createT } from '../i18n.ts';
 
@@ -27,9 +28,11 @@ export function ServiceCard({
   const handleToggle = () => {
     if (!selecionado) {
       cardRef.current?.classList.remove('animate-selectPulse');
-      // Force reflow to restart animation
       void cardRef.current?.offsetWidth;
       cardRef.current?.classList.add('animate-selectPulse');
+      trackEvent('service_select', { service_id: servico.id, service_name: servico.nome });
+    } else {
+      trackEvent('service_deselect', { service_id: servico.id });
     }
     onToggle(servico);
   };

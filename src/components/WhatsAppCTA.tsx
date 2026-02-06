@@ -2,6 +2,7 @@ import type { Servico } from '../types/servico.ts';
 import { WHATSAPP_NUMERO } from '../constants.ts';
 import { formatCurrency } from '../utils/formatCurrency.ts';
 import type { createT } from '../i18n.ts';
+import { trackEvent } from '../utils/analytics.ts';
 
 interface WhatsAppCTAProps {
   servicosSelecionados: Servico[];
@@ -41,11 +42,21 @@ export function WhatsAppCTA({
   const msg = buildWhatsAppMessage(servicosSelecionados, total, numConvidados, temConsultar, t);
   const url = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(msg)}`;
 
+  const handleClick = () => {
+    trackEvent('whatsapp_click', {
+      num_services: servicosSelecionados.length,
+      total,
+      num_guests: numConvidados,
+      services: servicosSelecionados.map((s) => s.id).join(','),
+    });
+  };
+
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleClick}
       className="
         flex items-center justify-center gap-2 w-full
         bg-whatsapp hover:bg-whatsapp-hover
