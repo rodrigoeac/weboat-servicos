@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import type { Servico, CategoriaServico } from '../types/servico.ts';
 import { servicos } from '../data/servicos.ts';
 import {
@@ -19,6 +19,11 @@ export function useSimulacao() {
   const [categoriaAtiva, setCategoriaAtiva] = useState<CategoriaServico | null>(null);
 
   const t = useMemo(() => createT(idioma), [idioma]);
+
+  useEffect(() => {
+    const langMap = { pt: 'pt-BR', en: 'en', es: 'es' } as const;
+    document.documentElement.lang = langMap[idioma];
+  }, [idioma]);
 
   const servicosSelecionados = useMemo(
     () => servicos.filter((s) => servicosSelecionadosIds.has(s.id)),
