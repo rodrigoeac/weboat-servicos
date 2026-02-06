@@ -26,6 +26,13 @@ export function useSimulacao() {
     document.documentElement.lang = langMap[idioma];
   }, [idioma]);
 
+  useEffect(() => {
+    if (servicosSelecionadosIds.size === 0) return;
+    const handler = (e: BeforeUnloadEvent) => { e.preventDefault(); };
+    window.addEventListener('beforeunload', handler);
+    return () => window.removeEventListener('beforeunload', handler);
+  }, [servicosSelecionadosIds.size]);
+
   const servicosTraduzidos = useMemo(
     () => servicos.map((s) => traduzirServico(s, idioma)),
     [idioma],
