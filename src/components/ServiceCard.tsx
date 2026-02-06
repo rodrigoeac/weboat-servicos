@@ -103,8 +103,15 @@ export function ServiceCard({
           </p>
         )}
 
-        {/* Expandable details */}
-        {expandido && <ServiceCardDetails servico={servico} t={t} />}
+        {/* Expandable details with smooth animation */}
+        <div
+          className="grid transition-[grid-template-rows] duration-300 ease-out"
+          style={{ gridTemplateRows: expandido ? '1fr' : '0fr' }}
+        >
+          <div className="overflow-hidden min-h-0">
+            <ServiceCardDetails servico={servico} t={t} />
+          </div>
+        </div>
       </div>
     </div>
   );

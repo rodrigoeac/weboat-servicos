@@ -9,7 +9,7 @@ interface ServiceCardDetailsProps {
 
 export function ServiceCardDetails({ servico, t }: ServiceCardDetailsProps) {
   return (
-    <div className="mt-4 space-y-4 animate-fadeIn">
+    <div className="mt-4 space-y-4">
       {servico.secoes.map((secao) => (
         <div key={secao.titulo}>
           <h4 className="font-heading font-semibold text-sm text-wave-blue mb-2">
