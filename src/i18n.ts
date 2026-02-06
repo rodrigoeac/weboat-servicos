@@ -123,7 +123,7 @@ export function createT(idioma: Idioma) {
   return function t(key: TranslationKey, vars?: Record<string, string | number>): string {
     const entry = translations[key];
     if (!entry) return key;
-    let text = entry[idioma] ?? entry['pt'];
+    let text: string = entry[idioma] ?? entry['pt'];
     if (vars) {
       for (const [k, v] of Object.entries(vars)) {
         text = text.replaceAll(`{${k}}`, String(v));
