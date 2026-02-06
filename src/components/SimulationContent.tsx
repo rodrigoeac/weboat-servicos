@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import type { Servico } from '../types/servico.ts';
 import type { TamanhoEmbarcacao, ResultadoSimulacao } from '../utils/calcularSimulacao.ts';
 import { TAMANHOS_EMBARCACAO } from '../constants.ts';
 import { formatCurrency } from '../utils/formatCurrency.ts';
 import { WhatsAppCTA } from './WhatsAppCTA.tsx';
+import { trackEvent } from '../utils/analytics.ts';
 import type { createT } from '../i18n.ts';
 
 interface SimulationContentProps {
@@ -32,6 +34,19 @@ export function SimulationContent({
   onLimpar,
   t,
 }: SimulationContentProps) {
+  const [copiado, setCopiado] = useState(false);
+
+  const handleCompartilhar = () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      setCopiado(true);
+      setTimeout(() => setCopiado(false), 2000);
+    });
+    trackEvent('share_link_click', {
+      num_services: servicosSelecionados.length,
+      num_guests: numConvidados,
+    });
+  };
+
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
@@ -66,7 +81,7 @@ export function SimulationContent({
             value={numConvidados}
             onChange={(e) => onConvidadosChange(Number(e.target.value))}
             className="w-16 h-10 text-center font-heading font-semibold text-ocean-deep border border-border-light rounded-lg focus:border-ocean-deep focus:ring-1 focus:ring-ocean-deep outline-none"
-            min={5}
+            min={1}
             max={50}
             aria-live="polite"
           />
@@ -200,6 +215,34 @@ export function SimulationContent({
         temConsultar={resultado.temConsultar}
         t={t}
       />
+
+      {/* Share link button */}
+      <button
+        onClick={handleCompartilhar}
+        className="
+          flex items-center justify-center gap-2 w-full
+          border border-ocean-deep text-ocean-deep
+          font-heading font-medium text-sm
+          py-2.5 px-4 rounded-xl
+          hover:bg-ocean-deep/5 transition-colors
+        "
+      >
+        {copiado ? (
+          <>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            {t('sim.linkCopiado')}
+          </>
+        ) : (
+          <>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+            </svg>
+            {t('sim.compartilhar')}
+          </>
+        )}
+      </button>
     </div>
   );
 }

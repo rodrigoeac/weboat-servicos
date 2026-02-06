@@ -17,7 +17,7 @@ export const TAMANHOS_EMBARCACAO = [
   { id: 'acima50pes' as const, i18nKey: 'pricing.acima50' as const },
 ];
 
-export const CONVIDADOS_MIN = 5;
+export const CONVIDADOS_MIN = 1;
 export const CONVIDADOS_MAX = 50;
 export const CONVIDADOS_DEFAULT = 10;
 
