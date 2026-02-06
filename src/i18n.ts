@@ -65,6 +65,8 @@ const translations = {
   'sim.consultar': { pt: 'Consultar', en: 'Contact us', es: 'Consultar' },
   'sim.cobrancaMinima': { pt: 'min. {n} pax', en: 'min. {n} pax', es: 'min. {n} pax' },
   'sim.limpar': { pt: 'Limpar selecao', en: 'Clear selection', es: 'Limpiar seleccion' },
+  'sim.compartilhar': { pt: 'Compartilhar link', en: 'Share link', es: 'Compartir enlace' },
+  'sim.linkCopiado': { pt: 'Link copiado!', en: 'Link copied!', es: 'Enlace copiado!' },
   'sim.diminuir': { pt: 'Diminuir convidados', en: 'Decrease guests', es: 'Disminuir invitados' },
   'sim.aumentar': { pt: 'Aumentar convidados', en: 'Increase guests', es: 'Aumentar invitados' },
 
