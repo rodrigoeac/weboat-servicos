@@ -49,6 +49,9 @@ export function SimulationBottomSheet({
 
       {/* Sheet */}
       <div
+        role={expandido ? 'dialog' : undefined}
+        aria-modal={expandido ? true : undefined}
+        aria-label={expandido ? t('sim.titulo') : undefined}
         className={`
           relative z-40 rounded-t-2xl shadow-xl border-t
           transition-all duration-300
@@ -117,7 +120,7 @@ export function SimulationBottomSheet({
               <label className="font-heading text-sm font-medium text-charcoal block mb-2">
                 {t('sim.convidados')}
               </label>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2" role="group" aria-label={t('sim.convidados')}>
                 <button
                   onClick={onDecrementar}
                   className="w-10 h-10 rounded-lg bg-pearl-gray text-ocean-deep font-bold text-xl flex items-center justify-center"
@@ -132,6 +135,7 @@ export function SimulationBottomSheet({
                   className="w-16 h-10 text-center font-heading font-semibold text-ocean-deep border border-border-light rounded-lg outline-none"
                   min={5}
                   max={50}
+                  aria-live="polite"
                 />
                 <button
                   onClick={onIncrementar}

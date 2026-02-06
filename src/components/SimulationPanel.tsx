@@ -53,7 +53,7 @@ export function SimulationPanel({
         <label className="font-heading text-sm font-medium text-charcoal block mb-2">
           {t('sim.convidados')}
         </label>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2" role="group" aria-label={t('sim.convidados')}>
           <button
             onClick={onDecrementar}
             className="w-10 h-10 rounded-lg bg-pearl-gray text-ocean-deep font-bold text-xl flex items-center justify-center hover:bg-border-light transition-colors"
@@ -68,6 +68,7 @@ export function SimulationPanel({
             className="w-16 h-10 text-center font-heading font-semibold text-ocean-deep border border-border-light rounded-lg focus:border-ocean-deep focus:ring-1 focus:ring-ocean-deep outline-none"
             min={5}
             max={50}
+            aria-live="polite"
           />
           <button
             onClick={onIncrementar}
