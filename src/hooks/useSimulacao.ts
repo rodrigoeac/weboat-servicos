@@ -9,14 +9,38 @@ import { CONVIDADOS_DEFAULT, CONVIDADOS_MIN, CONVIDADOS_MAX } from '../constants
 import { createT, type Idioma } from '../i18n.ts';
 import { traduzirServico } from '../utils/traduzirServico.ts';
 
+const validIds = new Set(servicos.map((s) => s.id));
+const validTamanhos = new Set<TamanhoEmbarcacao>(['ate36pes', 'ate50pes', 'acima50pes']);
+const validIdiomas = new Set<Idioma>(['pt', 'en', 'es']);
+
+function readUrlState() {
+  const params = new URLSearchParams(window.location.search);
+
+  const lang = params.get('lang') as Idioma | null;
+  const idioma: Idioma = lang && validIdiomas.has(lang) ? lang : 'pt';
+
+  const g = Number(params.get('g'));
+  const numConvidados = g >= CONVIDADOS_MIN && g <= CONVIDADOS_MAX ? g : CONVIDADOS_DEFAULT;
+
+  const tam = params.get('tam') as TamanhoEmbarcacao | null;
+  const tamanhoEmbarcacao: TamanhoEmbarcacao = tam && validTamanhos.has(tam) ? tam : 'ate36pes';
+
+  const sRaw = params.get('s');
+  const ids = sRaw ? sRaw.split(',').filter((id) => validIds.has(id)) : [];
+
+  return { idioma, numConvidados, tamanhoEmbarcacao, ids: new Set(ids) };
+}
+
 export function useSimulacao() {
-  const [idioma, setIdioma] = useState<Idioma>('pt');
-  const [numConvidados, setNumConvidados] = useState(CONVIDADOS_DEFAULT);
+  const initial = useMemo(() => readUrlState(), []);
+
+  const [idioma, setIdioma] = useState<Idioma>(initial.idioma);
+  const [numConvidados, setNumConvidados] = useState(initial.numConvidados);
   const [servicosSelecionadosIds, setServicosSelecionadosIds] = useState<Set<string>>(
-    new Set(),
+    initial.ids,
   );
   const [tamanhoEmbarcacao, setTamanhoEmbarcacao] =
-    useState<TamanhoEmbarcacao>('ate36pes');
+    useState<TamanhoEmbarcacao>(initial.tamanhoEmbarcacao);
   const [categoriaAtiva, setCategoriaAtiva] = useState<CategoriaServico | null>(null);
 
   const t = useMemo(() => createT(idioma), [idioma]);
@@ -32,6 +56,19 @@ export function useSimulacao() {
     window.addEventListener('beforeunload', handler);
     return () => window.removeEventListener('beforeunload', handler);
   }, [servicosSelecionadosIds.size]);
+
+  // Sync state to URL
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (idioma !== 'pt') params.set('lang', idioma);
+    if (numConvidados !== CONVIDADOS_DEFAULT) params.set('g', String(numConvidados));
+    if (tamanhoEmbarcacao !== 'ate36pes') params.set('tam', tamanhoEmbarcacao);
+    if (servicosSelecionadosIds.size > 0) params.set('s', [...servicosSelecionadosIds].join(','));
+
+    const qs = params.toString();
+    const url = qs ? `${window.location.pathname}?${qs}` : window.location.pathname;
+    window.history.replaceState(null, '', url);
+  }, [idioma, numConvidados, tamanhoEmbarcacao, servicosSelecionadosIds]);
 
   const servicosTraduzidos = useMemo(
     () => servicos.map((s) => traduzirServico(s, idioma)),
