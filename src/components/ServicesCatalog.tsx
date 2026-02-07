@@ -21,7 +21,10 @@ export function ServicesCatalog({
   t,
 }: ServicesCatalogProps) {
   const categoriasFiltradas = categoriaAtiva
-    ? CATEGORIAS.filter((c) => c.id === categoriaAtiva)
+    ? CATEGORIAS.filter((c) =>
+        c.id === categoriaAtiva ||
+        ((categoriaAtiva === 'openbar' || categoriaAtiva === 'churrasco') && c.id === 'combo'),
+      )
     : CATEGORIAS;
 
   return (
