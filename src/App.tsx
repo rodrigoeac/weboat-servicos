@@ -30,6 +30,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-sand-white flex flex-col">
+      <a href="#main-content" className="skip-to-content">
+        Skip to content
+      </a>
       <Hero t={t} idioma={idioma} onIdiomaChange={setIdioma} />
       <CategoryNav
         categoriaAtiva={categoriaAtiva}
@@ -37,7 +40,7 @@ export default function App() {
         t={t}
       />
 
-      <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-6 lg:px-6">
+      <main id="main-content" className="flex-1 max-w-6xl mx-auto w-full px-4 py-6 lg:px-6">
         <div className="lg:flex lg:gap-6">
           {/* Catalog — 2/3 on desktop */}
           <div className="lg:w-2/3">
