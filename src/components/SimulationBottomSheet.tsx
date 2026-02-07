@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import type { Servico } from '../types/servico.ts';
 import type { TamanhoEmbarcacao, ResultadoSimulacao } from '../utils/calcularSimulacao.ts';
 import { formatCurrency } from '../utils/formatCurrency.ts';
@@ -25,6 +25,59 @@ export function SimulationBottomSheet({
   ...contentProps
 }: SimulationBottomSheetProps) {
   const [expandido, setExpandido] = useState(false);
+  const sheetRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!expandido) {
+      if (previousFocusRef.current) {
+        previousFocusRef.current.focus();
+        previousFocusRef.current = null;
+      }
+      return;
+    }
+
+    previousFocusRef.current = document.activeElement as HTMLElement;
+
+    const sheet = sheetRef.current;
+    if (!sheet) return;
+
+    const focusFirst = () => {
+      const focusable = sheet.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      focusable[0]?.focus();
+    };
+    focusFirst();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setExpandido(false);
+        return;
+      }
+
+      if (e.key !== 'Tab') return;
+
+      const focusable = sheet.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    sheet.addEventListener('keydown', handleKeyDown);
+    return () => sheet.removeEventListener('keydown', handleKeyDown);
+  }, [expandido]);
 
   const temServicos = resultado.itens.length > 0;
 
@@ -40,6 +93,7 @@ export function SimulationBottomSheet({
 
       {/* Sheet */}
       <div
+        ref={sheetRef}
         role={expandido ? 'dialog' : undefined}
         aria-modal={expandido ? true : undefined}
         aria-label={expandido ? t('sim.titulo') : undefined}
