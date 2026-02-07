@@ -36,14 +36,27 @@ export function SimulationContent({
 }: SimulationContentProps) {
   const [copiado, setCopiado] = useState(false);
 
-  const handleCompartilhar = () => {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      setCopiado(true);
-      setTimeout(() => setCopiado(false), 2000);
-    });
+  const handleCompartilhar = async () => {
     trackEvent('share_link_click', {
       num_services: servicosSelecionados.length,
       num_guests: numConvidados,
+    });
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'WeBoat - Simulação de Serviços',
+          url: window.location.href,
+        });
+        return;
+      } catch (err) {
+        if (err instanceof Error && err.name === 'AbortError') return;
+      }
+    }
+
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      setCopiado(true);
+      setTimeout(() => setCopiado(false), 2000);
     });
   };
 
