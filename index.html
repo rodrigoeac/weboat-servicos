@@ -33,6 +33,55 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=DM+Sans:wght@500;600&family=Source+Sans+3:wght@400;600&display=swap"
       rel="stylesheet"
     />
+    <!-- Structured Data: LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "WeBoat Brasil",
+      "description": "Servicos adicionais para passeios de lancha e eventos no mar no Rio de Janeiro.",
+      "url": "https://weboat-servicos.vercel.app",
+      "telephone": "+55-21-97772-4114",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Marina da Gloria, Loja 06",
+        "addressLocality": "Rio de Janeiro",
+        "addressRegion": "RJ",
+        "addressCountry": "BR"
+      },
+      "openingHours": "Mo-Su 08:00-20:00",
+      "sameAs": [
+        "https://www.instagram.com/weboatbrasil",
+        "https://www.facebook.com/weboatbrasil"
+      ]
+    }
+    </script>
+
+    <!-- Structured Data: Service Catalog -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Servicos para Eventos no Mar",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "WeBoat Brasil"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Catalogo de Servicos WeBoat",
+        "itemListElement": [
+          { "@type": "OfferCatalog", "name": "Churrasco" },
+          { "@type": "OfferCatalog", "name": "Open Bar" },
+          { "@type": "OfferCatalog", "name": "Combos e Kits" },
+          { "@type": "OfferCatalog", "name": "Mesas e Petiscos" },
+          { "@type": "OfferCatalog", "name": "Decoracao" },
+          { "@type": "OfferCatalog", "name": "Entretenimento" },
+          { "@type": "OfferCatalog", "name": "Extras" }
+        ]
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
