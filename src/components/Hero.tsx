@@ -7,27 +7,29 @@ interface HeroProps {
   onIdiomaChange: (idioma: Idioma) => void;
 }
 
-const IDIOMAS: { id: Idioma; label: string }[] = [
-  { id: 'pt', label: 'PT' },
-  { id: 'en', label: 'EN' },
-  { id: 'es', label: 'ES' },
+const IDIOMAS: { id: Idioma; flag: string; label: string }[] = [
+  { id: 'pt', flag: '🇧🇷', label: 'Português' },
+  { id: 'en', flag: '🇺🇸', label: 'English' },
+  { id: 'es', flag: '🇪🇸', label: 'Español' },
 ];
 
 export function Hero({ t, idioma, onIdiomaChange }: HeroProps) {
   const languagePills = (
-    <div className="flex gap-1">
+    <div className="flex gap-1.5">
       {IDIOMAS.map((lang) => (
         <button
           key={lang.id}
           onClick={() => onIdiomaChange(lang.id)}
+          aria-label={lang.label}
+          title={lang.label}
           className={`
-            px-2.5 py-1 rounded font-heading text-xs font-medium transition-colors
+            w-9 h-9 rounded-lg flex items-center justify-center text-xl leading-none transition-all
             ${idioma === lang.id
-              ? 'bg-white text-ocean-deep'
-              : 'bg-white/15 text-white/70 hover:bg-white/25'}
+              ? 'bg-white/20 ring-2 ring-white scale-110'
+              : 'bg-white/5 hover:bg-white/15 opacity-60 hover:opacity-100'}
           `}
         >
-          {lang.label}
+          {lang.flag}
         </button>
       ))}
     </div>
